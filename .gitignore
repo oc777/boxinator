@@ -1,2 +1,4 @@
 .env
 
+# exclude everything
+db/sql-data/*
