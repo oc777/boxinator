@@ -22,7 +22,7 @@ public class BoxRepositoryJDBC implements IBoxRepository {
                 rs.getString("receiver"),
                 rs.getDouble("weight"),
                 rs.getString("color"),
-                rs.getString("destination"))
+                rs.getInt("destination"))
         );
         return list;
     }
