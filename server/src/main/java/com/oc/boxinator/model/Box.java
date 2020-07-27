@@ -5,14 +5,16 @@ public class Box {
     private double weight;
     private String color;
     private int destination;
+    private double shipping;
 
     public Box() {}
 
-    public Box(String receiverName, double boxWeight, String rgb, int countryId) {
+    public Box(String receiverName, double boxWeight, String rgb, int countryId, double shippingCost) {
         receiver = receiverName;
         weight = boxWeight;
         color = rgb;
         destination = countryId;
+        shipping = shippingCost;
     }
 
     public String getNameReceiver() {
@@ -27,6 +29,9 @@ public class Box {
     public int getDestination() {
         return destination;
     }
+    public double getShippingCost() {
+        return shipping;
+    }
 
     public void setNameReceiver(String receiverName) {
         receiver = receiverName;
@@ -39,5 +44,8 @@ public class Box {
     }
     public void setDestination(int countryId) {
         destination = countryId;
+    }
+    public void setShippingCost(double shippingCost) {
+        shipping = shippingCost;
     }
 }
