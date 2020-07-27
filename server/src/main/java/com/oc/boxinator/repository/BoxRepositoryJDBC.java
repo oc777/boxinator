@@ -23,15 +23,19 @@ public class BoxRepositoryJDBC implements IBoxRepository {
                 rs.getDouble("weight"),
                 rs.getString("color"),
                 rs.getInt("destination"),
-                rs.getDouble("shipping"))
+                rs.getDouble("shipping_cost"))
         );
         return list;
     }
 
     @Override
     public int addBox(Box box) {
-        final String sql = "INSERT INTO boxes (receiver, weight, color, destination, shipping_cost) VALUES(?,?,?,?,?)";
-        int res = jdbc.update(sql, box.getNameReceiver(), box.getWeight(), box.getColor(), box.getDestination());
+        final String sql = "INSERT " +
+        "INTO boxes " +
+        "(receiver, weight, color, destination, shipping_cost) " +
+        "VALUES " +
+        "(?,?,?,?,(? *(SELECT multiplier FROM countries WHERE country_id = ?)))";
+        int res = jdbc.update(sql, box.getNameReceiver(), box.getWeight(), box.getColor(), box.getDestination(), box.getWeight(), box.getDestination());
         return res;
     }
 
