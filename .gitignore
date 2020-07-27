@@ -1,4 +1,6 @@
 .env
+*.log
+.vscode/
 
 # exclude everything
 db/sql-data/*
