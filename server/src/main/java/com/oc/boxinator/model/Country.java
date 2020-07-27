@@ -1,12 +1,18 @@
 package com.oc.boxinator.model;
 
 public class Country {
+    private int id;
     private String name;
     private double multiplier;
 
-    public Country(String country, double shippingMultiplier) {
+    public Country(int countryId, String country, double shippingMultiplier) {
+        id = countryId;
         name = country;
         multiplier = shippingMultiplier;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
