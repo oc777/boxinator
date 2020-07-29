@@ -1,0 +1,35 @@
+header {
+    background-color: @green-color;
+    padding: 0 25px;
+
+    .flexed();
+
+    .logo {
+        .flexed();
+    }
+
+    nav {
+        width: 400px;
+        ul {
+            .flexed();
+            list-style: none;
+
+            li {
+                padding: 5px 10px;
+                background-color: @dark-green-color;
+                border-radius: 3px;
+                
+                a {
+                    color: white;
+                    text-decoration: none;
+                    font-weight: bold;
+
+                }
+                
+                &:hover {
+                    background-color: @green-darker-color;
+                }
+            }
+        }
+    }
+}
