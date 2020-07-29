@@ -28,5 +28,15 @@ services:
         ports:
             - "8080:8080"
 
+    client:
+        build: ./client
+        depends_on:
+            - db
+            - server
+        ports:
+            - "3000:3000"
+        volumes:
+            - ./client:/usr/src/app # dev
+
 volumes:
     sql_data: {}
