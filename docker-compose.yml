@@ -18,6 +18,7 @@ services:
 
     server:
         build: ./server
+        container_name: server
         depends_on:
             - db
         restart: always
@@ -26,15 +27,16 @@ services:
             SPRING_DATASOURCE_USERNAME: ${MYSQL_USER}
             SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD}
         ports:
-            - "8080:8080"
+            - "5555:5555"
 
     client:
         build: ./client
+        container_name: client
         depends_on:
             - db
             - server
         ports:
-            - "3000:3000"
+            - "8080:3000"
         volumes:
             - ./client:/usr/src/app # dev
 
