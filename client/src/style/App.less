@@ -1,2 +1,29 @@
+.App {
+    .container {
+        text-align: center;
+    }
 
+    .dispatch-table {
+        width: 80%;
+        max-width: 1000px;
+        margin: 20px auto;
+
+        th {
+            height: 40px;
+            background-color: @green-color;
+        }
+        td {
+            height: 30px;
+        }
+
+        &, th, td {
+            border: 1px solid rgb(154, 152, 152);
+            border-collapse: collapse;
+        }
+
+        tfoot {
+            font-weight: bold;
+        }
+    }
+}
 

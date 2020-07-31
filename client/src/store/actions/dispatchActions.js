@@ -23,16 +23,13 @@ export const fetchDispatch = () => {
         console.log("fetch dispatch");
         fetch(URL)
             .then(res => {
-                console.log(res);
                 return res.json();
             })
             .then(data => {
-                console.log(data);
-                dispatch(fetchDispatchSuccess(data))
+                dispatch(fetchDispatchSuccess(data));
             })
             .catch(err => {
-                console.log(err);
-                dispatch(fetchDispatchError(err))
+                dispatch(fetchDispatchError(err));
             })
     }
 }

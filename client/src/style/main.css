@@ -9,6 +9,30 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 /* Imports */
+.App .container {
+  text-align: center;
+}
+.App .dispatch-table {
+  width: 80%;
+  max-width: 1000px;
+  margin: 20px auto;
+}
+.App .dispatch-table th {
+  height: 40px;
+  background-color: #6ee8a1;
+}
+.App .dispatch-table td {
+  height: 30px;
+}
+.App .dispatch-table,
+.App .dispatch-table th,
+.App .dispatch-table td {
+  border: 1px solid #9a9898;
+  border-collapse: collapse;
+}
+.App .dispatch-table tfoot {
+  font-weight: bold;
+}
 header {
   background-color: #6ee8a1;
   padding: 0 25px;
