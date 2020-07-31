@@ -27,19 +27,19 @@ public class AppController {
         return "Welcome to the Boxinator";
     }
 
-    @GetMapping("/listboxes")
+    @GetMapping("/api/listboxes")
     public List<Box> getAll() {
         System.out.println("Get all boxes");
         return repositoryBox.findAll();
     }
 
-    @PostMapping("/addbox")
+    @PostMapping("/api/addbox")
     int addBox(@RequestBody Box newBox) {
         System.out.println("Add box");
         return repositoryBox.addBox(newBox);
     }
 
-    @GetMapping("/listcountries")
+    @GetMapping("/api/listcountries")
     public List<Country> getAllCountries() {
         System.out.println("Get all countries");
         return repositoryCountry.findAll();
