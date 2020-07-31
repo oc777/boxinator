@@ -3,7 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Header } from './components/header/Header';
 import { Home } from './views/home/Home';
-import { AddBox } from './views/box/AddBox';
+import AddBox from './views/box/AddBox';
 import ListDispatches from './views/dispatch/ListDispatches';
 
 import './style/main.css';
