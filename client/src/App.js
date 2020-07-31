@@ -2,10 +2,9 @@ import React from 'react';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Header } from './components/header/Header';
-import { Counter } from './components/counter/Counter';
 import { Home } from './views/home/Home';
 import { AddBox } from './views/box/AddBox';
-import { ListDispatches } from './views/dispatch/ListDispatches';
+import ListDispatches from './views/dispatch/ListDispatches';
 
 import './style/main.css';
 //import './style/App.css';
@@ -15,12 +14,12 @@ function App() {
     <Router>
         <div className="App">
           <Header />
-          <Counter />
+
           <div className='container'>
                 <Switch>
                     <Route exact path='/' component={ Home } />
-                    <Route exact path='/addbox' component = { AddBox } />
-                    <Route exact path='/listboxes' component = { ListDispatches } />
+                    <Route exact path='/addbox' component = { () => <AddBox /> } />
+                    <Route exact path='/listboxes' component = { () => <ListDispatches /> } />
                 </Switch>
          </div>
         </div>

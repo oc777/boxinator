@@ -6,7 +6,7 @@ const initialState = {
     error: null
 }
 
-export default boxReducer = (state = initialState, action) => {
+const dispatchReducer = (state = initialState, action) => {
     switch (action.type) {
         case "FETCH_DISPATCH_PENDING":
             return {
@@ -17,7 +17,7 @@ export default boxReducer = (state = initialState, action) => {
             return {
                 ...state,
                 pending: false,
-                dispatch: action.payload
+                dispatch: [...state.dispatch, action.payload]
             }
         case "FETCH_DISPATCH_ERROR":
             return {
@@ -29,3 +29,5 @@ export default boxReducer = (state = initialState, action) => {
             return state;
     }
 }
+
+export default dispatchReducer;

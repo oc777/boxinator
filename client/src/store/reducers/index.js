@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import dispatch from "./dispatchReducers";
+import dispatchReducer from "./dispatchReducers";
 
 export default combineReducers({
-  dispatch
+    dispatchReducer
 });

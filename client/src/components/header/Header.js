@@ -5,7 +5,7 @@ import logo from '../../logo.svg';
 export function Header({title}) {
     return (
         <header className="header">
-            <div class="logo">
+            <div className="logo">
                 <img src={logo} className="App-logo" alt="logo" height="80px" width="80px" />
                 <h1>{title}</h1>
             </div>
