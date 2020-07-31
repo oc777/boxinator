@@ -3,13 +3,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 
-//import dispatchReducer from '../../store/reducers/dispatchReducers'
 import { fetchDispatch } from '../../store/actions/dispatchActions'
 
 class ListDispatches extends Component {
-    // constructor(props) {
-    //     super(props);
-    // }
 
     componentDidMount() {
         // fetch
@@ -20,12 +16,12 @@ class ListDispatches extends Component {
         const data = this.props.data.dispatchReducer;
 
         let pending, error, table;
-        let totalWeight = 0; 
+        let totalWeight = 0;
         let totalCost = 0;
     
         if (data.pending) pending = "Loading...";
         if (data.error) error = "Something went terribly wrong here :(";
-        if (data.dispatch.length || []) {
+        if (data.dispatch || []) {
             table = data.dispatch.map(item => {
                 totalWeight += item.weight;
                 totalCost += item.shippingCost;
