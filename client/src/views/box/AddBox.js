@@ -7,20 +7,26 @@ import { fetchCountries } from '../../store/actions/countryActions'
 class AddBox extends Component {
     constructor(props) {
         super(props);
-        this.state = {country: '1'};
+        this.state = {
+            country: '1',
+            color: '222,222,222'
+        };
     
-        this.handleCountryChange = this.handleCountryChange.bind(this);
+        this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleCountryChange(event) {
-        this.setState({country: event.target.value}, () => {
-            console.log('new state ' + this.state.country)
+    handleChange(event) {
+        let nam = event.target.name;
+        let val = event.target.value;
+        this.setState({[nam]: val}, () => {
+            console.log(nam + ' : ' + val)
         })
     }
 
     handleSubmit(event) {
-        console.log('Submitted:');
+        console.log('Submitted: ')
+        console.log(this.state);
         event.preventDefault();
     }
 
@@ -53,14 +59,22 @@ class AddBox extends Component {
                     <p>Here be boxes... or dragons... or forms...</p>
                 </div>
     
-                <form onSubmit={this.handleSubmit}>
-                <label>
-                    Country
-                    <select value={this.state.country} onChange={this.handleDestinationChange}>
-                        {list}
-                    </select>
-                </label>
-                <input type="submit" value="Submit" />
+                <form className="add-box-form" onSubmit={this.handleSubmit}>
+                    <label>Name</label>
+                        <input name="name" type="text" onChange={this.handleChange} required />
+                    
+                    <label>Weight</label>
+                        <input name="weight" type="number" min="0" step="0.01" onChange={this.handleChange} required />
+                    
+                    <label>Box colour</label>
+                        <input name="color" type="text" value={this.state.color} required />
+                    
+                    <label>Country</label>
+                        <select name="country" value={this.state.country} onChange={this.handleChange}>
+                            {list}
+                        </select>
+                    
+                    <input type="submit" value="Save" />
                 </form>
             </React.Fragment>
         );

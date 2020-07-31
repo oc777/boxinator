@@ -33,6 +33,54 @@ code {
 .App .dispatch-table tfoot {
   font-weight: bold;
 }
+.App .add-box-form {
+  width: 80%;
+  max-width: 450px;
+  margin: 20px auto;
+  text-align: left;
+  padding: 20px;
+  background-color: #e8e8e8;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+}
+.App .add-box-form > * {
+  display: block;
+}
+.App .add-box-form label {
+  margin: 10px 0 5px 15px;
+  font-weight: bold;
+}
+.App .add-box-form input {
+  height: 30px;
+  padding-left: 15px;
+  border: 1px solid #d2d2d2;
+  border-radius: 3px;
+}
+.App .add-box-form select {
+  display: block;
+  height: 35px;
+  padding: 5px 15px;
+  margin-bottom: 25px;
+  box-sizing: border-box;
+  appearance: none;
+  border: 1px solid #d2d2d2;
+  border-radius: 3px;
+}
+.App .add-box-form input[type="submit"] {
+  height: 40px;
+  padding: 5px 10px;
+  background-color: #13984a;
+  border-radius: 3px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  width: 150px;
+  align-self: flex-end;
+}
+.App .add-box-form input[type="submit"]:hover {
+  background-color: #094b24;
+}
 header {
   background-color: #6ee8a1;
   padding: 0 25px;
@@ -73,4 +121,8 @@ header nav ul li:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.bordered-input {
+  border: 1px solid #d2d2d2;
+  border-radius: 3px;
 }
