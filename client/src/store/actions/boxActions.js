@@ -24,15 +24,14 @@ export const addBox = (data) => {
 
     fetch(URL, {
       method: 'POST',
-      mode: 'cors', // no-cors, *cors, same-origin
-      cache: 'no-cache',
       headers: {
+        Accept: 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
     })
       .then(res => {
-        return res.json()
+        if (res.status === 200) dispatch(addBoxSuccess())
       })
       .catch(err => {
         dispatch(addBoxError(err))
