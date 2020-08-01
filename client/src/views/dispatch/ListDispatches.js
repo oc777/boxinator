@@ -5,6 +5,11 @@ import { bindActionCreators } from 'redux'
 import { fetchDispatch } from '../../store/actions/dispatchActions'
 
 class ListDispatches extends Component {
+  state = {
+    pending: false,
+    error: false
+  }
+
   componentDidMount () {
     // fetch
     this.props.fetchData()
@@ -13,12 +18,10 @@ class ListDispatches extends Component {
   render () {
     const data = this.props.data.dispatchReducer
 
-    let pending, error, table
+    let table
     let totalWeight = 0
     let totalCost = 0
 
-    if (data.pending) pending = 'Loading...'
-    if (data.error) error = 'Something went terribly wrong here :('
     if (data.dispatch || []) {
       table = data.dispatch.map((item, index) => {
         totalWeight += item.weight
@@ -33,7 +36,7 @@ class ListDispatches extends Component {
             <td>{item.nameReceiver}</td>
             <td>{item.weight} kilograms</td>
             <td style={style} />
-            <td>{item.shippingCost} SEK</td>
+            <td>{item.shippingCost.toFixed(2)} SEK</td>
           </tr>
         )
       })
@@ -41,13 +44,15 @@ class ListDispatches extends Component {
 
     return (
       <>
-        <div className='listboxes'>
+        <div className='list-boxes'>
           <h1>List Dispatches</h1>
-          <p>Here be dispatches... or dragons... or tables...</p>
+
+          {!this.state.pending && <p className='info'>The list of boxes, including total weight and shipping cost</p>}
+          {this.state.pending && <p className='loading'>Loading...</p>}
+          {this.state.error && <p className='error'>Something went terribly wrong here :(</p>}
 
         </div>
-        <p className='pending'>{pending}</p>
-        <p className='error'>{error}</p>
+
         <table className='dispatch-table'>
           <thead>
             <tr>
@@ -70,6 +75,7 @@ class ListDispatches extends Component {
           </tfoot>
 
         </table>
+
       </>
     )
   }
