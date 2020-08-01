@@ -8,6 +8,9 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+* {
+  box-sizing: border-box;
+}
 /* Imports */
 .App .container {
   text-align: center;
@@ -32,54 +35,6 @@ code {
 }
 .App .dispatch-table tfoot {
   font-weight: bold;
-}
-.App .add-box-form {
-  width: 80%;
-  max-width: 450px;
-  margin: 20px auto;
-  text-align: left;
-  padding: 20px;
-  background-color: #e8e8e8;
-  border-radius: 3px;
-  display: flex;
-  flex-direction: column;
-}
-.App .add-box-form > * {
-  display: block;
-}
-.App .add-box-form label {
-  margin: 10px 0 5px 15px;
-  font-weight: bold;
-}
-.App .add-box-form input {
-  height: 30px;
-  padding-left: 15px;
-  border: 1px solid #d2d2d2;
-  border-radius: 3px;
-}
-.App .add-box-form select {
-  display: block;
-  height: 35px;
-  padding: 5px 15px;
-  margin-bottom: 25px;
-  box-sizing: border-box;
-  appearance: none;
-  border: 1px solid #d2d2d2;
-  border-radius: 3px;
-}
-.App .add-box-form input[type="submit"] {
-  height: 40px;
-  padding: 5px 10px;
-  background-color: #13984a;
-  border-radius: 3px;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  width: 150px;
-  align-self: flex-end;
-}
-.App .add-box-form input[type="submit"]:hover {
-  background-color: #094b24;
 }
 header {
   background-color: #6ee8a1;
@@ -114,6 +69,79 @@ header nav ul li a {
 }
 header nav ul li:hover {
   background-color: #094b24;
+}
+.add-box-form {
+  width: 80%;
+  max-width: 450px;
+  margin: 20px auto;
+  text-align: left;
+  padding: 5%;
+  background-color: #e8e8e8;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+}
+.add-box-form > * {
+  display: block;
+}
+.add-box-form label {
+  margin: 10px 0 5px 15px;
+  font-weight: bold;
+}
+.add-box-form input {
+  height: 30px;
+  padding-left: 15px;
+  border: 1px solid #d2d2d2;
+  border-radius: 3px;
+}
+.add-box-form select {
+  display: block;
+  height: 30px;
+  padding: 5px 15px;
+  margin-bottom: 25px;
+  box-sizing: border-box;
+  appearance: none;
+  border: 1px solid #d2d2d2;
+  border-radius: 3px;
+}
+.add-box-form input[type="submit"] {
+  height: 40px;
+  padding: 5px 10px;
+  background-color: #13984a;
+  border-radius: 3px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  width: 150px;
+  align-self: flex-end;
+}
+.add-box-form input[type="submit"]:hover {
+  background-color: #094b24;
+}
+.color-picker {
+  position: relative;
+  height: 30px;
+  padding: 0;
+}
+.color-picker > * {
+  position: absolute;
+  top: 0;
+  padding: 0;
+  padding-left: 0;
+  cursor: pointer;
+  width: 100%;
+}
+.color-picker label[for=color] {
+  color: blue;
+  z-index: 3;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 300;
+  margin: 5px 0;
+  background-color: transparent;
+}
+.color-picker input[type=color] {
+  padding-left: 0;
 }
 /* Variables */
 /* Mixins */

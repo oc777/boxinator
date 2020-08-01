@@ -10,11 +10,13 @@ class AddBox extends Component {
         super(props);
         this.state = {
             destination: '1',
-            color: '222,222,222'
+            color: '255,255,255',
+            hex: '#ffffff'
         };
     
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleColorChange = this.handleColorChange.bind(this);
     }
 
     handleChange(event) {
@@ -39,6 +41,20 @@ class AddBox extends Component {
         console.log(this.state)
     }
 
+    handleColorChange(event) {
+        const color = event.target.value
+        const r = parseInt(color.substr(1,2), 16)
+        const g = parseInt(color.substr(3,2), 16)
+        const b = parseInt(color.substr(5,2), 16)
+        console.log(`red: ${r}, green: ${g}, blue: ${b}`)
+
+        this.setState({
+            hex: color,
+            color: `${r},${g},${b}`
+        }, () => console.log(this.state))
+
+        
+    }
 
 
     render() {
@@ -69,7 +85,11 @@ class AddBox extends Component {
                         <input name="weight" type="number" min="0" step="0.01" onChange={this.handleChange} required />
                     
                     <label>Box colour</label>
-                        <input name="color" type="text" value={this.state.color} required />
+                        <div className="color-picker">
+                            <label htmlFor="color">- click to pick the colour -</label>
+                            <input name="color" id="color" type="color" value={this.state.hex} 
+                            onChange={this.handleColorChange} required />
+                        </div>
                     
                     <label>Country</label>
                         <select name="destination" value={this.state.country} onChange={this.handleChange}>
