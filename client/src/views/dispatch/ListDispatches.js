@@ -22,7 +22,7 @@ class ListDispatches extends Component {
         if (data.pending) pending = "Loading...";
         if (data.error) error = "Something went terribly wrong here :(";
         if (data.dispatch || []) {
-            table = data.dispatch.map(item => {
+            table = data.dispatch.map((item, index) => {
                 totalWeight += item.weight;
                 totalCost += item.shippingCost;
 
@@ -31,7 +31,7 @@ class ListDispatches extends Component {
                     minWidth: '90px'
                 };
                 return (
-                    <tr>
+                    <tr key={index}>
                         <td>{item.nameReceiver}</td>
                         <td>{item.weight} kilograms</td>
                         <td style={style}></td>
