@@ -49,7 +49,7 @@ class AddBox extends Component {
         if (data.destination || []) {
             list = data.destination.map(item => {
                 return (
-                    <option value={item.id}>{item.name}</option>
+                    <option key={item.id} value={item.id}>{item.name}</option>
                 )
             });
         }
