@@ -25,7 +25,6 @@ export const fetchCountries = () => {
         return res.json()
       })
       .then(data => {
-        console.log(data)
         dispatch(fetchCountriesSuccess(data))
       })
       .catch(err => {

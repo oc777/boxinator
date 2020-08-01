@@ -38,7 +38,6 @@ class ListDispatches extends Component {
         )
       })
     }
-    console.log(table)
 
     return (
       <>

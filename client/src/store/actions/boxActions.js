@@ -18,11 +18,9 @@ export const addBoxError = (error) => ({
 // do POST here
 export const addBox = (data) => {
   console.log('adding box')
-  console.log(data)
 
   return (dispatch) => {
     dispatch(addBoxPending())
-    console.log('post box')
 
     fetch(URL, {
       method: 'POST',
@@ -30,7 +28,6 @@ export const addBox = (data) => {
       cache: 'no-cache',
       headers: {
         'Content-Type': 'application/json'
-        // 'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: JSON.stringify(data)
     })

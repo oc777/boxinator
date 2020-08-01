@@ -22,14 +22,10 @@ class AddBox extends Component {
   handleChange (event) {
     const nam = event.target.name
     const val = event.target.value
-    this.setState({ [nam]: val }, () => {
-      console.log(nam + ' : ' + val)
-    })
+    this.setState({ [nam]: val })
   }
 
   handleSubmit (event) {
-    console.log('Submitted: ')
-    console.log(JSON.stringify(this.state))
     event.preventDefault()
     this.props.addBox(this.state)
   }
@@ -37,8 +33,6 @@ class AddBox extends Component {
   componentDidMount () {
     // fetch
     this.props.fetchCountries()
-    console.log('Mounted')
-    console.log(this.state)
   }
 
   handleColorChange (event) {
@@ -46,17 +40,15 @@ class AddBox extends Component {
     const r = parseInt(color.substr(1, 2), 16)
     const g = parseInt(color.substr(3, 2), 16)
     const b = parseInt(color.substr(5, 2), 16)
-    console.log(`red: ${r}, green: ${g}, blue: ${b}`)
 
     this.setState({
       hex: color,
       color: `${r},${g},${b}`
-    }, () => console.log(this.state))
+    })
   }
 
   render () {
     const data = this.props.data.countryReducer
-    console.log(data)
 
     let list
     if (data.destination || []) {
