@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { fetchCountries } from '../../store/actions/countryActions'
+import { addBox } from '../../store/actions/boxActions'
 
 class AddBox extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            country: '1',
+            destination: '1',
             color: '222,222,222'
         };
     
@@ -26,8 +27,9 @@ class AddBox extends Component {
 
     handleSubmit(event) {
         console.log('Submitted: ')
-        console.log(this.state);
+        console.log(JSON.stringify(this.state));
         event.preventDefault();
+        this.props.addBox(this.state);
     }
 
     componentDidMount() {
@@ -61,7 +63,7 @@ class AddBox extends Component {
     
                 <form className="add-box-form" onSubmit={this.handleSubmit}>
                     <label>Name</label>
-                        <input name="name" type="text" onChange={this.handleChange} required />
+                        <input name="nameReceiver" type="text" onChange={this.handleChange} required />
                     
                     <label>Weight</label>
                         <input name="weight" type="number" min="0" step="0.01" onChange={this.handleChange} required />
@@ -70,7 +72,7 @@ class AddBox extends Component {
                         <input name="color" type="text" value={this.state.color} required />
                     
                     <label>Country</label>
-                        <select name="country" value={this.state.country} onChange={this.handleChange}>
+                        <select name="destination" value={this.state.country} onChange={this.handleChange}>
                             {list}
                         </select>
                     
@@ -86,7 +88,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-    fetchCountries: fetchCountries
+    fetchCountries: fetchCountries,
+    addBox: addBox
 }, dispatch);
 
 export default connect(

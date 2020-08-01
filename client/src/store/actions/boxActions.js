@@ -6,9 +6,8 @@ export const addBoxPending = () => ({
     type: "ADD_BOX_PENDING"
 })
 
-export const addBoxSuccess = (dispatch) => ({
-    type: "ADD_BOX_SUCCESS",
-    dispatch: dispatch
+export const addBoxSuccess = () => ({
+    type: "ADD_BOX_SUCCESS"
 })
 
 export const addBoxError = (error) => ({
@@ -17,19 +16,31 @@ export const addBoxError = (error) => ({
 })
 
 // do POST here
-export const addBox = () => {
+export const addBox = (data) => {
+    console.log("adding box");
+    console.log(data);
+
     return (dispatch) => {
         dispatch(addBoxPending());
         console.log("post box");
-        fetch(URL)
+
+        fetch(URL, {
+            method: 'POST',
+            mode: 'cors', // no-cors, *cors, same-origin
+            cache: 'no-cache',
+            headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: JSON.stringify(data)
+        })
             .then(res => {
                 return res.json();
-            })
-            .then(data => {
-                dispatch(addBoxSuccess(data));
             })
             .catch(err => {
                 dispatch(addBoxError(err));
             })
+
     }
+
 }
