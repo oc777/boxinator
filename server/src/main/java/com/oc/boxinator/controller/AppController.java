@@ -34,7 +34,7 @@ public class AppController {
     }
 
     @PostMapping("/api/addbox")
-    int addBox(@RequestBody Box newBox) {
+    public int addBox(@RequestBody Box newBox) {
         System.out.println("Add box");
         return repositoryBox.addBox(newBox);
     }
