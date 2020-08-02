@@ -11,7 +11,10 @@ class AddBox extends Component {
     color: '255,255,255',
     hex: '#ffffff',
     nameReceiver: '',
-    weight: ''
+    weight: '',
+    nameError: '',
+    weightError: '',
+    colorError: ''
   }
 
   componentDidMount () {
@@ -36,6 +39,7 @@ class AddBox extends Component {
     const nam = event.target.name
     const val = event.target.value
     this.setState({ [nam]: val })
+    this.validateInput(nam, val)
   }
 
   handleSubmit = (event) => {
@@ -53,6 +57,24 @@ class AddBox extends Component {
       hex: color,
       color: `${r},${g},${b}`
     })
+  }
+
+  validateInput = (name, value) => {
+    switch (name) {
+      case 'nameReceiver':
+        this.setState({
+          nameError: (value.length < 1) ? 'Name cannot be empty' : ''
+        })
+        break;
+      case 'weight':
+        this.setState({
+          weightError: (value < 1 || value.length < 1) ? 'Weight cannot be negative, null, or empty' : '',
+          weight: (value < 0) && '0'
+        })
+        break;
+      default:
+        break;
+    }
   }
 
   getCountryList() {
@@ -89,11 +111,13 @@ class AddBox extends Component {
           <input name='nameReceiver' type='text'
           onChange={this.handleChange} value={this.state.nameReceiver}
           required />
+          <p className='input-err'>{this.state.nameError}</p>
 
           <label>Weight</label>
           <input name='weight' type='number' min='0' step='0.01'
           onChange={this.handleChange} value={this.state.weight}
           required />
+          <p className='input-err'>{this.state.weightError}</p>
 
           <label>Box colour</label>
           <div className='color-picker'>
@@ -103,6 +127,7 @@ class AddBox extends Component {
               onChange={this.handleColorChange} required
             />
           </div>
+          <p className='input-err'>{this.state.colorError}</p>
 
           <label>Country</label>
           <select name='destination' value={this.state.country} onChange={this.handleChange}>

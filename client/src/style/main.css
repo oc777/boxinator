@@ -162,6 +162,12 @@ header nav ul li:hover {
 .add-box-form input[type="submit"]:hover {
   background-color: #094b24;
 }
+.add-box-form .input-err {
+  font-size: 14px;
+  color: red;
+  margin: 3px 0;
+  padding-left: 15px;
+}
 .color-picker {
   position: relative;
   height: 30px;
