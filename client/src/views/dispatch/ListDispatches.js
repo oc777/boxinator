@@ -64,7 +64,7 @@ class ListDispatches extends Component {
           <tfoot>
             <tr>
               <td>Total</td>
-              <td>{totalWeight} kilograms</td>
+              <td>{totalWeight.toFixed(2)} kilograms</td>
               <td />
               <td>{totalCost.toFixed(2)} SEK</td>
             </tr>
