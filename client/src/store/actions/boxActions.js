@@ -31,7 +31,12 @@ export const addBox = (data) => {
       body: JSON.stringify(data)
     })
       .then(res => {
-        if (res.status === 200) dispatch(addBoxSuccess())
+        return res.json()
+      })
+      .then(data => {
+        if (data === 1) {
+          dispatch(addBoxSuccess())
+        }
       })
       .catch(err => {
         dispatch(addBoxError(err))
