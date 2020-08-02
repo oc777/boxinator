@@ -49,13 +49,16 @@ class AddBox extends Component {
 
   handleColorChange = (event) => {
     const color = event.target.value
+    console.log(color)
     const r = parseInt(color.substr(1, 2), 16)
     const g = parseInt(color.substr(3, 2), 16)
     const b = parseInt(color.substr(5, 2), 16)
+    console.log(`${r},${g},${b}`)
 
     this.setState({
-      hex: color,
-      color: `${r},${g},${b}`
+        colorError: (b > r && b > g) ? 'You cannot choose any shade of blue' : '',
+        hex: (b > r && b > g) ? '#ffffff' : color,
+        color: (b > r && b > g) ? '255,255,255' : `${r},${g},${b}`
     })
   }
 
