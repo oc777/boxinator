@@ -41,9 +41,6 @@ code {
   top: 100px;
   right: 50px;
   visibility: visible;
-  -webkit-animation: fadeOut 10s 10s linear both;
-  -moz-animation: fadeOut 10s 10s linear both;
-  animation: fadeOut 10s 10s linear both;
 }
 .App .info p {
   padding: 20px;

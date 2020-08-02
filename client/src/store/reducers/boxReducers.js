@@ -25,6 +25,13 @@ const boxReducer = (state = initialState, action) => {
         pending: false,
         error: action.errorMsg
       }
+    case 'ADD_BOX_INIT':
+      return {
+        ...state,
+        pending: false,
+        error: null,
+        success: false
+      }
     default:
       return state
   }

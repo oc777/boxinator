@@ -15,6 +15,10 @@ export const addBoxError = (error) => ({
   errorMsg: error
 })
 
+export const addBoxInitial = () => ({
+  type: 'ADD_BOX_INIT'
+})
+
 // do POST here
 export const addBox = (data) => {
   console.log('adding box')
@@ -37,6 +41,7 @@ export const addBox = (data) => {
         if (data === 1) {
           dispatch(addBoxSuccess())
         }
+        setTimeout(() => dispatch(addBoxInitial()), 10000)
       })
       .catch(err => {
         dispatch(addBoxError(err))
