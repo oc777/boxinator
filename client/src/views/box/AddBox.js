@@ -14,7 +14,8 @@ class AddBox extends Component {
     weight: '',
     nameError: '',
     weightError: '',
-    colorError: ''
+    colorError: '',
+    isValid: false
   }
 
   componentDidMount () {
@@ -44,7 +45,8 @@ class AddBox extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    this.props.addBox(this.state)
+    this.validateForm()
+    if (this.state.isValid) this.props.addBox(this.state)
   }
 
   handleColorChange = (event) => {
@@ -55,10 +57,24 @@ class AddBox extends Component {
     const b = parseInt(color.substr(5, 2), 16)
     console.log(`${r},${g},${b}`)
 
+    // if blue is the predominant value - regard the color as a shade of blue
+    // and show error
     this.setState({
         colorError: (b > r && b > g) ? 'You cannot choose any shade of blue' : '',
         hex: (b > r && b > g) ? '#ffffff' : color,
         color: (b > r && b > g) ? '255,255,255' : `${r},${g},${b}`
+    })
+  }
+
+  validateForm = () => {
+    this.validateInput('nameReceiver', this.state.nameReceiver)
+    this.validateInput('weight', this.state.weight)
+    this.setState({
+        isValid: (
+            this.state.nameError === '' && 
+            this.state.weightError === '' && 
+            this.state.colorError === ''
+        ) ? true : false
     })
   }
 
@@ -71,7 +87,7 @@ class AddBox extends Component {
         break;
       case 'weight':
         this.setState({
-          weightError: (value < 1 || value.length < 1) ? 'Weight cannot be negative, null, or empty' : '',
+          weightError: (value < 1 || value.length < 1) ? 'Weight cannot be negative, zero, or empty' : '',
           weight: (value < 0) && '0'
         })
         break;
