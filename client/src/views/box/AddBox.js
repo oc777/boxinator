@@ -69,8 +69,6 @@ class AddBox extends Component {
   }
 
   render () {
-    // console.log(this.props.boxData)
-    //const data = this.props.data.box
     const list = this.getCountryList()
 
     return (
@@ -82,7 +80,7 @@ class AddBox extends Component {
 
         <div className='info'>
           {this.props.boxData.pending && <p className='loading'>Sending...</p>}
-          {this.props.boxData.success && <p className='loading'>Success!</p>}
+          {this.props.boxData.success && <p className='success'>Success!</p>}
           {this.props.boxData.error && <p className='error'>Something went terribly wrong here :(</p>}
         </div>
 

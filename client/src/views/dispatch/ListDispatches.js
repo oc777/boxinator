@@ -5,11 +5,6 @@ import { bindActionCreators } from 'redux'
 import { fetchDispatch } from '../../store/actions/dispatchActions'
 
 class ListDispatches extends Component {
-  state = {
-    pending: false,
-    error: false
-  }
-
   componentDidMount () {
     // fetch
     this.props.fetchData()
@@ -46,11 +41,12 @@ class ListDispatches extends Component {
       <>
         <div className='list-boxes'>
           <h1>List Dispatches</h1>
+          <p>The list of boxes, including total weight and shipping cost</p>
+        </div>
 
-          {!this.state.pending && <p className='info'>The list of boxes, including total weight and shipping cost</p>}
-          {this.state.pending && <p className='loading'>Loading...</p>}
-          {this.state.error && <p className='error'>Something went terribly wrong here :(</p>}
-
+        <div className='info'>
+          {data.pending && <p className='loading'>Loading...</p>}
+          {data.error && <p className='error'>Something went terribly wrong here :(</p>}
         </div>
 
         <table className='dispatch-table'>
