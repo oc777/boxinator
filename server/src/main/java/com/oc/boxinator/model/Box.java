@@ -1,9 +1,16 @@
 package com.oc.boxinator.model;
 
+import javax.validation.constraints.*;
+
 public class Box {
+    @NotBlank(message = "Receiver's name cannot be empty")
     private String receiver;
+    @Positive(message = "Weight must be a positive number")
+    @DecimalMin(value = "0.1", message = "Weight must be minimum 100g")
     private double weight;
+    @NotBlank(message = "Color field cannot be empty")
     private String color;
+    @Positive(message = "Destination ID must be a positive integer")
     private int destination;
     private double shipping;
 

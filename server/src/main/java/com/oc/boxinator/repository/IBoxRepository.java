@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface IBoxRepository {
     List<Box> findAll();
-    int addBox(Box box);
+    int addBox(Box box) ;
 }

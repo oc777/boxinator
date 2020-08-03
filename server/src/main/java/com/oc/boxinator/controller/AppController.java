@@ -2,12 +2,15 @@ package com.oc.boxinator.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
 import com.oc.boxinator.model.Box;
 import com.oc.boxinator.model.Country;
 import com.oc.boxinator.repository.BoxRepositoryJDBC;
 import com.oc.boxinator.repository.CountryRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,9 +37,15 @@ public class AppController {
     }
 
     @PostMapping("/api/addbox")
-    public int addBox(@RequestBody Box newBox) {
+    public ResponseEntity<String> addBox(@Valid @RequestBody Box newBox) {
         System.out.println("Add box");
-        return repositoryBox.addBox(newBox);
+
+        repositoryBox.addBox(newBox);
+
+        return new ResponseEntity<>(
+            "Box added successfully",
+            HttpStatus.CREATED
+        );
     }
 
     @GetMapping("/api/listcountries")
