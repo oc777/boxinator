@@ -35,15 +35,15 @@ export const addBox = (data) => {
       body: JSON.stringify(data)
     })
       .then(res => {
-        return res.json()
-      })
-      .then(data => {
-        if (data === 1) {
+        console.log('res')
+        console.log(res.status)
+        if (res.status === 201) {
           dispatch(addBoxSuccess())
+          setTimeout(() => dispatch(addBoxInitial()), 10000)
         }
-        setTimeout(() => dispatch(addBoxInitial()), 10000)
       })
       .catch(err => {
+        console.log(err)
         dispatch(addBoxError(err))
       })
   }
