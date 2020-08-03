@@ -46,24 +46,51 @@ class AddBox extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     this.validateForm()
-    if (this.state.isValid) this.props.addBox(this.state)
   }
 
   handleColorChange = (event) => {
     const color = event.target.value
-    console.log(color)
     const r = parseInt(color.substr(1, 2), 16)
     const g = parseInt(color.substr(3, 2), 16)
     const b = parseInt(color.substr(5, 2), 16)
-    console.log(`${r},${g},${b}`)
 
-    // if blue is the predominant value - regard the color as a shade of blue
-    // and show error
+    // decide based on hue range
+    let isInvalid = this.validateColor(r, g, b)
+
     this.setState({
-        colorError: (b > r && b > g) ? 'You cannot choose any shade of blue' : '',
-        hex: (b > r && b > g) ? '#ffffff' : color,
-        color: (b > r && b > g) ? '255,255,255' : `${r},${g},${b}`
+        colorError: isInvalid ? 'All shades of blue are forbidden' : '',
+        hex: isInvalid ? '#ffffff' : color,
+        color: isInvalid ? '255,255,255' : `${r},${g},${b}`
     })
+  }
+
+  validateColor = (r,g,b) => {
+    r /= 255
+    g /= 255
+    b /= 255
+    let max = Math.max(r, g, b)
+    let min = Math.min(r, g, b)
+    let diff = max - min
+
+    let hue
+
+    switch (max) {
+        case r:
+            hue = (60 * ((g - b) / diff) + 360) % 360
+            break
+        case g:
+            hue = (60 * ((b - r) / diff) + 120) % 360
+            break
+        case b:
+            hue = (60 * ((r - g) / diff) + 240) % 360
+            break
+        default:
+            hue = 0
+    }
+
+    // 240 (Blue) < hue < 170 (Cyan)
+    const isInvalid = hue > 170 ? (hue < 240 ? true : false) : true
+    return isInvalid
   }
 
   validateForm = () => {
@@ -75,6 +102,8 @@ class AddBox extends Component {
             this.state.weightError === '' && 
             this.state.colorError === ''
         ) ? true : false
+    }, () => {
+        if (this.state.isValid) this.props.addBox(this.state)
     })
   }
 
@@ -82,13 +111,13 @@ class AddBox extends Component {
     switch (name) {
       case 'nameReceiver':
         this.setState({
-          nameError: (value.length < 1) ? 'Name cannot be empty' : ''
+          nameError: (value.trim().length < 1) ? 'Fill in the name' : ''
         })
         break;
       case 'weight':
         this.setState({
-          weightError: (value < 1 || value.length < 1) ? 'Weight cannot be negative, zero, or empty' : '',
-          weight: (value < 0) && '0'
+          weightError: (value < 0.1 || value.length < 1) ? 'Weight must be over 0.1kg' : '',
+          weight: (value < 0) ? '0' : value
         })
         break;
       default:
