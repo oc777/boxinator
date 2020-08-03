@@ -5,7 +5,7 @@ WORKDIR /workspace
 COPY pom.xml /workspace
 COPY src /workspace/src
 #RUN mvn -f pom.xml clean package
-RUN mvn -f pom.xml package
+RUN mvn -f pom.xml package > /dev/null
 
 # STAGE 2: Run
 FROM openjdk:8-alpine
