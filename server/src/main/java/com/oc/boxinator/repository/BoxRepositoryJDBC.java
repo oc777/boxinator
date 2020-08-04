@@ -40,7 +40,7 @@ public class BoxRepositoryJDBC implements IBoxRepository {
         return res;
     }
 
-    private double calculateShippingCost(int countryID, double weight) {
+    public double calculateShippingCost(int countryID, double weight) {
         final String sql = "SELECT multiplier FROM countries WHERE country_id = ?";
         double multiplier = jdbc.queryForObject(sql, new Object[] {countryID}, double.class);
         double shippingCost = multiplier * weight;
