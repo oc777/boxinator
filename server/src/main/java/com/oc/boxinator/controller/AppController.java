@@ -5,8 +5,8 @@ import java.util.List;
 import javax.validation.Valid;
 import com.oc.boxinator.model.Box;
 import com.oc.boxinator.model.Country;
-import com.oc.boxinator.repository.BoxRepositoryJDBC;
-import com.oc.boxinator.repository.CountryRepository;
+import com.oc.boxinator.service.BoxService;
+import com.oc.boxinator.service.CountryService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AppController {
     @Autowired
-    BoxRepositoryJDBC repositoryBox;
+    BoxService box;
 
     @Autowired
-    CountryRepository repositoryCountry;
+    CountryService country;
 
     @RequestMapping("/")
     public String index() {
@@ -33,14 +33,14 @@ public class AppController {
     @GetMapping("/api/listboxes")
     public List<Box> getAll() {
         System.out.println("Get all boxes");
-        return repositoryBox.findAll();
+        return box.findAll();
     }
 
     @PostMapping("/api/addbox")
     public ResponseEntity<String> addBox(@Valid @RequestBody Box newBox) {
         System.out.println("Add box");
 
-        repositoryBox.addBox(newBox);
+        box.addBox(newBox);
 
         return new ResponseEntity<>(
             "Box added successfully",
@@ -51,7 +51,7 @@ public class AppController {
     @GetMapping("/api/listcountries")
     public List<Country> getAllCountries() {
         System.out.println("Get all countries");
-        return repositoryCountry.findAll();
+        return country.findAll();
     }
 
 }

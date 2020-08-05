@@ -29,8 +29,7 @@ public class BoxRepositoryJDBC implements IBoxRepository {
     }
 
     @Override
-    public int addBox(Box box) {
-        double shippingCost = calculateShippingCost(box.getDestination(), box.getWeight());
+    public int addBox(Box box, double shippingCost) {
         final String sql = "INSERT " +
         "INTO boxes " +
         "(receiver, weight, color, destination, shipping_cost) " +
@@ -38,13 +37,6 @@ public class BoxRepositoryJDBC implements IBoxRepository {
         "(?,?,?,?,?)";
         int res = jdbc.update(sql, box.getNameReceiver(), box.getWeight(), box.getColor(), box.getDestination(), shippingCost);
         return res;
-    }
-
-    public double calculateShippingCost(int countryID, double weight) {
-        final String sql = "SELECT multiplier FROM countries WHERE country_id = ?";
-        double multiplier = jdbc.queryForObject(sql, new Object[] {countryID}, double.class);
-        double shippingCost = multiplier * weight;
-        return shippingCost;
     }
 
 }

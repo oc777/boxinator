@@ -45,6 +45,17 @@ public class RepositoryTest {
         Assert.assertEquals(cr.findAll().size(), 4);
     }
 
+    @Test
+    public void getMultiplierTest() {
+        Assert.assertEquals(cr.getMultiplier(1), 1.3, 0);
+    }
+
+    @Test
+    public void getMultiplierErrorTest() {
+        assertThrows(RuntimeException.class, () -> {
+            cr.getMultiplier(10);
+        });
+    }
 
     @Test
     public void getAllBoxesTest() {
@@ -53,30 +64,15 @@ public class RepositoryTest {
     }
 
     @Test
-    public void calculateShippingCostTest() {
-        double weight = 1.2;
-        double multiplier = 4;
-        int country = 2;
-        Assert.assertEquals(weight*multiplier, br.calculateShippingCost(country, weight), 0);
-    }
-
-    @Test
-    public void calculateShippingCostErrorTest() {
-        assertThrows(RuntimeException.class, () -> {
-            br.calculateShippingCost(10, 2);
-        });
-    }
-
-    @Test
     public void addBoxErrorTest() {
         assertThrows(RuntimeException.class, () -> {
-            br.addBox(new Box("", 1, "0,0,0", 1, 0));
+            br.addBox(new Box("", 1, "0,0,0", 1, 0), 7.77);
         });
     }
 
     @Test
     public void addBoxSuccessTest() {
-        Assert.assertEquals(1, br.addBox(new Box("Aragorn", 1, "0,0,0", 1, 0)));
+        Assert.assertEquals(1, br.addBox(new Box("Aragorn", 1, "0,0,0", 1, 0), 7.77));
     }
 
 }

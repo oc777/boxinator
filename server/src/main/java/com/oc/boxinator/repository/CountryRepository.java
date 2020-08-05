@@ -23,4 +23,10 @@ public class CountryRepository {
         );
         return list;
     }
+
+    public double getMultiplier(int id) {
+        final String sql = "SELECT multiplier FROM countries WHERE country_id = ?";
+        double multiplier = jdbc.queryForObject(sql, new Object[] {id}, double.class);
+        return multiplier;
+    }
 }
