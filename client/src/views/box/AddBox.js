@@ -88,8 +88,7 @@ class AddBox extends Component {
             hue = 0
     }
 
-    // 240 (Blue) < hue < 170 (Cyan)
-    const isInvalid = hue > 170 ? (hue < 240 ? true : false) : true
+    const isInvalid = hue > 170 ? (hue < 255 ? true : false) : false
     return isInvalid
   }
 
@@ -203,3 +202,5 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(AddBox)
+
+export { AddBox }

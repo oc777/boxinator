@@ -26,7 +26,7 @@ export const addBox = (data) => {
   return (dispatch) => {
     dispatch(addBoxPending())
 
-    fetch(URL, {
+    return fetch(URL, {
       method: 'POST',
       headers: {
         Accept: 'application/json',

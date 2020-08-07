@@ -20,7 +20,7 @@ export const fetchCountries = () => {
   return (dispatch) => {
     dispatch(fetchCountriesPending())
     console.log('fetch countries')
-    fetch(URL)
+    return fetch(URL)
       .then(res => {
         return res.json()
       })
