@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddBox snapshot renders without crashing with required props 1`] = `
+Array [
+  <div
+    className="addbox"
+  >
+    <h1>
+      Add new Box
+    </h1>
+    <p>
+      Fill in the form and click 
+      <code>
+        Save
+      </code>
+    </p>
+  </div>,
+  <div
+    className="info"
+  />,
+  <form
+    className="add-box-form"
+    onSubmit={[Function]}
+  >
+    <label>
+      Name
+    </label>
+    <input
+      name="nameReceiver"
+      onChange={[Function]}
+      required={true}
+      type="text"
+      value=""
+    />
+    <p
+      className="input-err"
+    >
+      
+    </p>
+    <label>
+      Weight
+    </label>
+    <input
+      min="0"
+      name="weight"
+      onChange={[Function]}
+      required={true}
+      step="0.01"
+      type="number"
+      value=""
+    />
+    <p
+      className="input-err"
+    >
+      
+    </p>
+    <label>
+      Box colour
+    </label>
+    <div
+      className="color-picker"
+    >
+      <label
+        htmlFor="color"
+      >
+        - click to pick the colour -
+      </label>
+      <input
+        id="color"
+        name="color"
+        onChange={[Function]}
+        required={true}
+        type="color"
+        value="#ffffff"
+      />
+    </div>
+    <p
+      className="input-err"
+    >
+      
+    </p>
+    <label>
+      Country
+    </label>
+    <select
+      name="destination"
+      onChange={[Function]}
+    >
+      <option
+        value={1}
+      >
+        Sweden
+      </option>
+      <option
+        value={2}
+      >
+        China
+      </option>
+    </select>
+    <input
+      type="submit"
+      value="Save"
+    />
+  </form>,
+]
+`;
