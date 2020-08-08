@@ -11,7 +11,8 @@ const dispatchReducer = (state = initialState, action) => {
     case 'FETCH_DISPATCH_PENDING':
       return {
         ...state,
-        pending: true
+        pending: true,
+        error: false
       }
     case 'FETCH_DISPATCH_SUCCESS':
       return {

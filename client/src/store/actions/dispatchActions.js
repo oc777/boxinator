@@ -23,7 +23,8 @@ export const fetchDispatch = () => {
     console.log('fetch dispatch')
     return fetch(URL)
       .then(res => {
-        return res.json()
+        if (res.status !== 200) throw new Error('server failure')
+        else return res.json()
       })
       .then(data => {
         dispatch(fetchDispatchSuccess(data))
