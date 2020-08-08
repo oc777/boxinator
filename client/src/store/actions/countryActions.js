@@ -22,7 +22,8 @@ export const fetchCountries = () => {
     console.log('fetch countries')
     return fetch(URL)
       .then(res => {
-        return res.json()
+        if (res.status !== 200) throw new Error('server failure')
+        else return res.json()
       })
       .then(data => {
         dispatch(fetchCountriesSuccess(data))

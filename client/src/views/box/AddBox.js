@@ -151,6 +151,8 @@ class AddBox extends Component {
           {this.props.boxData.pending && <p className='loading'>Sending...</p>}
           {this.props.boxData.success && <p className='success'>Success!</p>}
           {this.props.boxData.error && <p className='error'>Something went terribly wrong here :(</p>}
+          {this.props.countryData.pending && <p className='loading'>Loading...</p>}
+          {this.props.countryData.error && <p className='error'>Cannot get list of countries :(</p>}
         </div>
 
         <form className='add-box-form' onSubmit={this.handleSubmit}>

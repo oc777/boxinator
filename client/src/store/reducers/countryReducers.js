@@ -11,7 +11,8 @@ const countryReducer = (state = initialState, action) => {
     case 'FETCH_COUNTRIES_PENDING':
       return {
         ...state,
-        pending: true
+        pending: true,
+        error: false
       }
     case 'FETCH_COUNTRIES_SUCCESS':
       return {
