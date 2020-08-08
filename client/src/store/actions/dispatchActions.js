@@ -21,7 +21,7 @@ export const fetchDispatch = () => {
   return (dispatch) => {
     dispatch(fetchDispatchPending())
     console.log('fetch dispatch')
-    fetch(URL)
+    return fetch(URL)
       .then(res => {
         return res.json()
       })

@@ -89,3 +89,5 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(ListDispatches)
+
+export { ListDispatches }

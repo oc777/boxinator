@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListDispatches snapshot renders without crashing with required props 1`] = `
+Array [
+  <div
+    className="list-boxes"
+  >
+    <h1>
+      List Dispatches
+    </h1>
+    <p>
+      The list of boxes, including total weight and shipping cost
+    </p>
+  </div>,
+  <div
+    className="info"
+  />,
+  <table
+    className="dispatch-table"
+  >
+    <thead>
+      <tr>
+        <th>
+          Receiver
+        </th>
+        <th>
+          Weight
+        </th>
+        <th>
+          Box colour
+        </th>
+        <th>
+          Shipping cost
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          Bilbo
+        </td>
+        <td>
+          1.2
+           kilograms
+        </td>
+        <td
+          style={
+            Object {
+              "backgroundColor": "rgb(#2a2a2a)",
+              "minWidth": "90px",
+            }
+          }
+        />
+        <td>
+          2.30
+           SEK
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Frodo
+        </td>
+        <td>
+          0.45
+           kilograms
+        </td>
+        <td
+          style={
+            Object {
+              "backgroundColor": "rgb(#2a2a2a)",
+              "minWidth": "90px",
+            }
+          }
+        />
+        <td>
+          8.00
+           SEK
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>
+          Total
+        </td>
+        <td>
+          1.65
+           kilograms
+        </td>
+        <td />
+        <td>
+          10.30
+           SEK
+        </td>
+      </tr>
+    </tfoot>
+  </table>,
+]
+`;
