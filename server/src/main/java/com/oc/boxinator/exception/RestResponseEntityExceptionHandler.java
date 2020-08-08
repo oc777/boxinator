@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.sql.SQLNonTransientConnectionException;
 import java.util.Date;
 import java.util.stream.Collectors;
 
@@ -52,4 +53,14 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
             return new ResponseEntity<>(body, new HttpHeaders(), HttpStatus.BAD_REQUEST);
         }
 
+    // handling db connection error
+    @ExceptionHandler(SQLNonTransientConnectionException.class)
+    public ResponseEntity<Object> connection(SQLNonTransientConnectionException ex, WebRequest request) {
+        Map<String, Object> body = new LinkedHashMap<>();
+            body.put("timestamp", new Date());
+            body.put("status", HttpStatus.INTERNAL_SERVER_ERROR);
+            body.put("errors", "db connection failure");
+
+            return new ResponseEntity<>(body, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }
