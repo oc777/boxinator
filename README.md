@@ -35,7 +35,7 @@
 
 - run `docker-compose build`
 - run `docker-compose up -d`
-- go to your favorite [browser](localhost:8080)
+- go to your favorite browser: `localhost:8080`
 - enjoy :tada:
 
 
